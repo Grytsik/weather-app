@@ -1,0 +1,7 @@
+.search__input {
+	padding: 10px 30px;
+	border-radius: 10px;
+	font-size: 15px;
+	outline: none;
+	opacity: .7;
+}
