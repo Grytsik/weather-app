@@ -2,26 +2,42 @@ import './App.css';
 import axios from 'axios';
 import Header from './Components/Header/Header';
 import { apiKEY, apiURL } from './api';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import WeatherItem from './Components/WeatherItem/WeatherItem';
 
 function App() {
   const [value, setValue] = useState('');
   const [location, setLocation] = useState([]);
+  const [icon, setIcon] = useState('')
   const url = `${apiURL}/weather?q=${value}&units=metric&appid=${apiKEY}`;
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
-      axios
-        .get(url)
-        .then((response) => {
-          setLocation(response.data);
-        })
-        .catch((err) => console.log('Error founded' + ' ' + err));
+      setValue(event.target.value);
     }
-    setValue('');
+  };
+  console.log(location);
+  console.log(icon);
+
+  const getWeather = async () => {
+    if (value) {
+      await fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.cod >= 400) {
+            setLocation(false);
+          } else {
+            setLocation(data);
+            setIcon(data.weather[0].main);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
-  console.log(location);
+  useEffect(() => {
+    getWeather();
+  }, [value]);
 
   return (
     <>
@@ -33,11 +49,11 @@ function App() {
               type="text"
               placeholder="type city..."
               className="search__input"
-              onChange={(e) => setValue(e.target.value)}
-              onKeyPress={searchLocation}
+              onKeyDown={searchLocation}
             />
           </div>
         </div>
+        <WeatherItem location={location} icon={icon} />
       </div>
     </>
   );
