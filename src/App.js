@@ -1,34 +1,52 @@
 import './App.css';
-import axios from 'axios';
 import Header from './Components/Header/Header';
 import { apiKEY, apiURL } from './api';
 import { useEffect, useState } from 'react';
 import WeatherItem from './Components/WeatherItem/WeatherItem';
+import { ProgressBar } from 'react-loader-spinner';
 
 function App() {
   const [value, setValue] = useState('');
   const [location, setLocation] = useState([]);
-  const [icon, setIcon] = useState('')
+  const [loading, setLoading] = useState(true);
+  const [lon, setLon] = useState(null);
+  const [lat, setLat ] = useState(null);
   const url = `${apiURL}/weather?q=${value}&units=metric&appid=${apiKEY}`;
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
-      setValue(event.target.value);
+      setValue(event.target.value.trim());
     }
   };
-  console.log(location);
-  console.log(icon);
+
+  // fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Odessa&units=metric&appid=${apiKEY}`)
+  // .then(response => response.json())
+  // .then(data => console.log(data));
+
+  navigator.geolocation.getCurrentPosition(function (position) {
+    setLat(position.coords.latitude);
+    setLon(position.coords.longitude);
+  });
+
+  console.log(lat);
+  console.log(lon);
+  console.log(navigator.geolocation);
+
+  fetch(`${apiURL}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKEY}`)
+  .then(response => response.json())
+  .then(data => console.log(data));
 
   const getWeather = async () => {
     if (value) {
+      setLoading(true);
       await fetch(url)
         .then((response) => response.json())
         .then((data) => {
           if (data.cod >= 400) {
-            setLocation(false);
+            setLocation(null);
           } else {
             setLocation(data);
-            setIcon(data.weather[0].main);
+            setLoading(false);
           }
         })
         .catch((err) => console.log(err));
@@ -53,7 +71,7 @@ function App() {
             />
           </div>
         </div>
-        <WeatherItem location={location} icon={icon} />
+        <WeatherItem location={location} loading={loading} />
       </div>
     </>
   );
