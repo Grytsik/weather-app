@@ -1,5 +1,6 @@
 .weather {
   width: 500px;
+  position: relative;
   padding: 30px;
   background: white;
   margin: 0 auto;
@@ -15,6 +16,7 @@
 
 .weather__city {
   font-size: 35px;
+  min-width: 200px;
 }
 
 .weather__temp {
@@ -33,7 +35,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-	font-size: 20px;
+  font-size: 20px;
 }
 
 .weather__icon {
@@ -49,9 +51,9 @@
 }
 
 .weather__descriptions-item {
-	width: 150px;
+  width: 150px;
   border: 1px solid black;
-	border-radius: 20px;
+  border-radius: 20px;
   padding: 25px;
   background: #d3d3d3;
 }
@@ -67,6 +69,12 @@
   display: flex;
   align-items: center;
   position: relative;
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
+.blocks-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

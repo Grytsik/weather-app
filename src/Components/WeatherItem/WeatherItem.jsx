@@ -6,38 +6,24 @@ import barom from '../../img/barometer.svg';
 import humidity from '../../img/humidity.svg';
 import wind from '../../img/wind.svg';
 import Moment from 'react-moment';
-import { ProgressBar } from 'react-loader-spinner';
+import { ColorRing } from 'react-loader-spinner';
 
 export default function WeatherItem({ location, loading }) {
-  console.log(location);
   let today = new Date();
   const toUpperCaseFilter = (d) => {
     return d.toUpperCase();
   };
 
-  console.log(loading);
+  console.log(location);
 
   return (
     <>
       <div className="weather">
-        {loading ? (
-          <>
-            <ProgressBar
-              height="80"
-              width="80"
-              ariaLabel="progress-bar-loading"
-              wrapperStyle={{}}
-              wrapperClass="progress-bar-wrapper"
-              borderColor="#F4442E"
-              barColor="#51E5FF"
-            />
-            <div>Not found....</div>
-          </>
-        ) : location.length !== 0 ? (
+        {location?.length !== 0 ? (
           <>
             <div className="weather__item">
               <p className="weather__city">
-                {location.name}, {location.sys.country}
+                {location?.name}, {location?.sys.country}
               </p>
               <div className="weather__time">
                 <Moment filter={toUpperCaseFilter} format="MMMM DD">
@@ -116,6 +102,7 @@ export default function WeatherItem({ location, loading }) {
           <div>Not found...</div>
         )}
       </div>
+        
     </>
   );
 }
