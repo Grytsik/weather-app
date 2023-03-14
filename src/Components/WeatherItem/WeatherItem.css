@@ -16,7 +16,7 @@
 
 .weather__city {
   font-size: 35px;
-  min-width: 200px;
+  max-width: 200px;
 }
 
 .weather__temp {
@@ -61,7 +61,7 @@
 .weather__icon-feels {
   width: 43px;
   position: absolute;
-  left: 98px;
+  left: 93px;
   bottom: -6px;
 }
 

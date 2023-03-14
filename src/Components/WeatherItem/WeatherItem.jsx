@@ -6,15 +6,12 @@ import barom from '../../img/barometer.svg';
 import humidity from '../../img/humidity.svg';
 import wind from '../../img/wind.svg';
 import Moment from 'react-moment';
-import { ColorRing } from 'react-loader-spinner';
 
-export default function WeatherItem({ location, loading }) {
+export default function WeatherItem({ location }) {
   let today = new Date();
   const toUpperCaseFilter = (d) => {
     return d.toUpperCase();
   };
-
-  console.log(location);
 
   return (
     <>
@@ -26,7 +23,10 @@ export default function WeatherItem({ location, loading }) {
                 {location?.name}, {location?.sys.country}
               </p>
               <div className="weather__time">
-                <Moment filter={toUpperCaseFilter} format="MMMM DD">
+                <Moment
+                  filter={toUpperCaseFilter}
+                  format="MMMM DD"
+                >
                   {today}
                 </Moment>
                 <Moment format="dddd HH:mm">{today}</Moment>
@@ -34,22 +34,31 @@ export default function WeatherItem({ location, loading }) {
             </div>
             <div className="weather__info">
               <span className="weather__temp">
-                <img className="weather__icon" src={tempIcon} alt="temp-icon" />
-                {location?.main?.temp.toFixed()}&deg;C
+                <img
+                  className="weather__icon"
+                  src={tempIcon}
+                  alt="temp-icon"
+                />
+                {location?.main?.temp.toFixed()}
+                &deg;C
               </span>
               <img
-                src={`https://openweathermap.org/img/wn/${location.weather[0].icon}@2x.png`}
+                src={`https://openweathermap.org/img/wn/${location?.weather[0].icon}@2x.png`}
                 alt="icon"
               />
             </div>
             <div className="weather__descriptions">
               <div className="weather__descriptions-item">
                 <span className="weather__feels-item">
-                  Feels like: {location?.main?.feels_like.toFixed()}&deg;C
+                  Feels like:
+                  {location?.main?.feels_like.toFixed()}
+                  &deg;C
                 </span>
                 <div className="weather__feels-item">
                   <span>
-                    Temp min: {location?.main?.temp_min.toFixed()}&deg;C
+                    Temp min:
+                    {location?.main?.temp_min.toFixed()}
+                    &deg;C
                   </span>
                   <img
                     className="weather__icon-feels"
@@ -59,7 +68,9 @@ export default function WeatherItem({ location, loading }) {
                 </div>
                 <div className="weather__feels-item">
                   <span>
-                    Temp max: {location?.main?.temp_max.toFixed()}&deg;C
+                    Temp max:
+                    {location?.main?.temp_max.toFixed()}
+                    &deg;C
                   </span>
                   <img
                     className="weather__icon-feels"
@@ -71,7 +82,10 @@ export default function WeatherItem({ location, loading }) {
               <div className="weather__descriptions-item">
                 <div className="weather__feels-item">
                   <span>
-                    Pressure: {Math.round(location?.main?.pressure * 0.750062)}
+                    Pressure:
+                    {Math.round(
+                      location?.main?.pressure * 0.750062,
+                    )}
                   </span>
                   <img
                     className="weather__icon-feels"
@@ -80,7 +94,9 @@ export default function WeatherItem({ location, loading }) {
                   />
                 </div>
                 <div className="weather__feels-item">
-                  <span>Humidity: {location?.main?.humidity}%</span>
+                  <span>
+                    Humidity: {location?.main?.humidity}%
+                  </span>
                   <img
                     className="weather__icon-feels"
                     src={humidity}
@@ -88,7 +104,10 @@ export default function WeatherItem({ location, loading }) {
                   />
                 </div>
                 <div className="weather__feels-item">
-                  <span>Wind: {location?.wind?.speed.toFixed()}m/s</span>
+                  <span>
+                    Wind: {location?.wind?.speed.toFixed()}
+                    m/s
+                  </span>
                   <img
                     className="weather__icon-feels"
                     src={wind}
@@ -102,7 +121,6 @@ export default function WeatherItem({ location, loading }) {
           <div>Not found...</div>
         )}
       </div>
-        
     </>
   );
 }

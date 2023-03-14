@@ -3,6 +3,7 @@ import Header from './Components/Header/Header';
 import { apiKEY, apiURL } from './api';
 import { useEffect, useState } from 'react';
 import WeatherItem from './Components/WeatherItem/WeatherItem';
+import Alert from './Components/Alert/Alert';
 import { ColorRing } from 'react-loader-spinner';
 
 function App() {
@@ -23,24 +24,34 @@ function App() {
   // .then(data => console.log(data));
 
   useEffect(() => {
-    getCurrentPosition();
+    if (!value) {
+      getCurrentPosition();
+    }
     getWeatherIp();
   }, [lat, value]);
 
   const getCurrentPosition = () => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      if (!null) {
-        setLat(position.coords.latitude);
-        setLon(position.coords.longitude);
-      }
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLat(position.coords.latitude);
+          setLon(position.coords.longitude);
+        },
+        function (e) {
+          Alert(e);
+        },
+      );
+    }
   };
 
   const getWeatherIp = async () => {
     setLoading(true);
-    let how_to_search = value ? `q=${value}` : `lat=${lat}&lon=${lon}`;
+    let how_to_search = value
+      ? `q=${value}`
+      : `lat=${lat}&lon=${lon}`;
+
     await fetch(
-      `${apiURL}/weather?${how_to_search}&units=metric&appid=${apiKEY}`
+      `${apiURL}/weather?${how_to_search}&units=metric&appid=${apiKEY}`,
     )
       .then((response) => response.json())
       .then((data) => {
@@ -56,32 +67,38 @@ function App() {
 
   return (
     <>
-      <div className="">
-        <div className="header">
-          <div className=" container header__container">
-            <Header />
-            <input
-              type="text"
-              placeholder="type city..."
-              className="search__input"
-              onKeyDown={searchLocation}
-            />
-          </div>
-        </div>
-        {loading ? (
-          <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+      <div className="header">
+        <div className=" container header__container">
+          <Header />
+          <input
+            type="text"
+            placeholder="type city..."
+            className="search__input"
+            onKeyDown={searchLocation}
           />
-        ) : (
-          <WeatherItem location={location} loading={loading} />
-        )}
+        </div>
       </div>
+      {loading ? (
+        <ColorRing
+          visible={true}
+          height="100"
+          width="100"
+          ariaLabel="blocks-loading"
+          wrapperClass="blocks-wrapper"
+          colors={[
+            '#e15b64',
+            '#f47e60',
+            '#f8b26a',
+            '#abbd81',
+            '#849b87',
+          ]}
+        />
+      ) : (
+        <WeatherItem
+          location={location}
+          loading={loading}
+        />
+      )}
     </>
   );
 }
