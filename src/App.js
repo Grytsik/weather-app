@@ -2,13 +2,14 @@ import './App.css';
 import Header from './Components/Header/Header';
 import { apiKEY, apiURL } from './api';
 import { useEffect, useState } from 'react';
-import WeatherItem from './Components/WeatherItem/WeatherItem';
+import Weather from './Components/Weather/Weather';
 import Alert from './Components/Alert/Alert';
 import { ColorRing } from 'react-loader-spinner';
 
 function App() {
   const [value, setValue] = useState('');
   const [location, setLocation] = useState([]);
+  const [forecast, setForecast] = useState([]);
   const [loading, setLoading] = useState(true);
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
@@ -19,9 +20,30 @@ function App() {
     }
   };
 
-  // fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Odessa&units=metric&appid=${apiKEY}`)
-  // .then(response => response.json())
-  // .then(data => console.log(data));
+  const how_to_search = value
+    ? `q=${value}`
+    : `lat=${lat}&lon=${lon}`;
+
+  const getForecast = async () => {
+    fetch(
+      `${apiURL}/forecast?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.cod >= 400) {
+          setForecast([]);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
+        } else {
+          const dailyDate = data.list.filter((item) =>
+            item.dt_txt.includes('18:00:00'),
+          );
+          setForecast(dailyDate);
+          setLoading(false);
+        }
+      });
+  };
 
   useEffect(() => {
     if (!value) {
@@ -37,8 +59,8 @@ function App() {
           setLat(position.coords.latitude);
           setLon(position.coords.longitude);
         },
-        function (e) {
-          Alert(e);
+        (err) => {
+          Alert(err);
         },
       );
     }
@@ -46,23 +68,26 @@ function App() {
 
   const getWeatherIp = async () => {
     setLoading(true);
-    let how_to_search = value
-      ? `q=${value}`
-      : `lat=${lat}&lon=${lon}`;
 
-    await fetch(
-      `${apiURL}/weather?${how_to_search}&units=metric&appid=${apiKEY}`,
+    fetch(
+      `${apiURL}/weather?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`,
     )
       .then((response) => response.json())
       .then((data) => {
         if (data.cod >= 400) {
-          setLocation(null);
+          setLocation([]);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
         } else {
           setLocation(data);
           setLoading(false);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
+    getForecast();
   };
 
   return (
@@ -72,7 +97,7 @@ function App() {
           <Header />
           <input
             type="text"
-            placeholder="type city..."
+            placeholder="Пошук..."
             className="search__input"
             onKeyDown={searchLocation}
           />
@@ -94,9 +119,10 @@ function App() {
           ]}
         />
       ) : (
-        <WeatherItem
+        <Weather
           location={location}
           loading={loading}
+          forecast={forecast}
         />
       )}
     </>
