@@ -1,8 +1,9 @@
 import Moment from 'react-moment';
+import Icon from '../Icon/Icon';
 import 'moment/locale/uk';
 import './Forecast.css';
 
-export default function Forecast({ day }) {
+export default function Forecast({ day, icon }) {
   return (
     <div className="forecast__item">
       <Moment locale="uk" format="dddd D">
@@ -15,7 +16,7 @@ export default function Forecast({ day }) {
         <div>
           <img
             className="forecast__icon"
-            src={`https://openweathermap.org/img/wn/${day?.weather[0]?.icon}@2x.png`}
+            src={Icon(icon)}
             alt="icon"
           />
         </div>

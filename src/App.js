@@ -10,6 +10,7 @@ function App() {
   const [value, setValue] = useState('');
   const [location, setLocation] = useState([]);
   const [forecast, setForecast] = useState([]);
+  const [icon, setIcon] = useState('');
   const [loading, setLoading] = useState(true);
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
@@ -58,10 +59,8 @@ function App() {
         (position) => {
           setLat(position.coords.latitude);
           setLon(position.coords.longitude);
-        },
-        (err) => {
-          Alert(err);
-        },
+          console.log(lat, lon);
+        }
       );
     }
   };
@@ -80,6 +79,7 @@ function App() {
             setLoading(false);
           }, 3000);
         } else {
+          setIcon(data?.weather[0]?.main);
           setLocation(data);
           setLoading(false);
         }
@@ -91,7 +91,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className='App'>
       <div className="header">
         <div className=" container header__container">
           <Header />
@@ -123,9 +123,10 @@ function App() {
           location={location}
           loading={loading}
           forecast={forecast}
+          icon={icon}
         />
       )}
-    </>
+    </div>
   );
 }
 

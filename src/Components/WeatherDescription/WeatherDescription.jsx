@@ -11,8 +11,7 @@ export default function WeatherDescription({ location,tempIcon }) {
       <div className="weather__descriptions-item">
         <div className="weather__feels-item">
           <span>
-            Відчуваеться:
-            {location?.main?.feels_like.toFixed()}
+            Відчуваеться: {location?.main?.feels_like.toFixed()}
             &deg;C
           </span>
           <img
@@ -23,9 +22,7 @@ export default function WeatherDescription({ location,tempIcon }) {
         </div>
         <div className="weather__feels-item">
           <span>
-            Мінімум:
-            {location?.main?.temp_min.toFixed()}
-            &deg;C
+            Мінімум: {location?.main?.temp_min.toFixed()}&deg;C
           </span>
           <img
             className="weather__icon-feels"
@@ -35,9 +32,7 @@ export default function WeatherDescription({ location,tempIcon }) {
         </div>
         <div className="weather__feels-item">
           <span>
-            Максимум:
-            {location?.main?.temp_max.toFixed()}
-            &deg;C
+            Максимум: {location?.main?.temp_max.toFixed()}&deg;C
           </span>
           <img
             className="weather__icon-feels"
@@ -49,11 +44,7 @@ export default function WeatherDescription({ location,tempIcon }) {
       <div className="weather__descriptions-item">
         <div className="weather__feels-item">
           <span>
-            Тиск:
-            {Math.round(
-              location?.main?.pressure * 0.750062,
-            )}
-            мм
+            Тиск: {Math.round(location?.main?.pressure * 0.750062)}мм
           </span>
           <img
             className="weather__icon-feels"

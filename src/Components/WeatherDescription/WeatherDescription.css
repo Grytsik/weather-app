@@ -5,12 +5,13 @@
 
 .weather__descriptions-item {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  width: 400px;
+  width: 230px;
   box-shadow: 2px 1px 10px black;
   border-radius: 20px;
   padding: 25px;
-  background: #ffdead;
+  /* background: #ffdead; */
 }
 
 .weather__icon-feels {
@@ -19,7 +20,7 @@
 
 .weather__feels-item {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
   font-weight: bold;

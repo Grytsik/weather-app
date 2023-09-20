@@ -4,9 +4,14 @@ import errImg from '../../img/computer.png';
 import Moment from 'react-moment';
 import Forecast from '../Forecast/Forecast';
 import WeatherDescription from '../WeatherDescription/WeatherDescription';
+import Icon from '../Icon/Icon';
 import { apiImg } from '../../api';
 
-export default function Weather({ location, forecast }) {
+export default function Weather({
+  location,
+  forecast,
+  icon,
+}) {
   const today = new Date();
 
   const toUpperCaseFilter = (d) => {
@@ -22,6 +27,20 @@ export default function Weather({ location, forecast }) {
               <p className="weather__city">
                 {location?.name}, {location?.sys?.country}
               </p>
+              <span className="weather__temp">
+                <img
+                  className="weather__icon"
+                  src={tempIcon}
+                  alt="temp-icon"
+                />
+                {location?.main?.temp.toFixed()}
+                &deg;C
+              </span>
+              <img
+                className="weather__animate"
+                src={Icon(icon)}
+                alt="icon"
+              />
               <div className="weather__time">
                 <Moment
                   filter={toUpperCaseFilter}
@@ -37,28 +56,17 @@ export default function Weather({ location, forecast }) {
                 </Moment>
               </div>
             </div>
-            <div className="weather__info">
-              <span className="weather__temp">
-                <img
-                  className="weather__icon"
-                  src={tempIcon}
-                  alt="temp-icon"
-                />
-                {location?.main?.temp.toFixed()}
-                &deg;C
-              </span>
-              <img
-                src={`${apiImg}/img/wn/${location?.weather[0].icon}@2x.png`}
-                alt="icon"
-              />
-            </div>
             <WeatherDescription
               location={location}
               tempIcon={tempIcon}
             />
             <div className="forecast">
               {forecast.map((item, index) => (
-                <Forecast key={index} day={item} />
+                <Forecast
+                  icon={icon}
+                  key={index}
+                  day={item}
+                />
               ))}
             </div>
           </>

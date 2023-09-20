@@ -1,10 +1,15 @@
 body {
+  font-family: 'Kanit', sans-serif;
   background-image: url(./img/nature.avif);
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
   object-fit: cover;
-  font-family: 'Kanit', sans-serif;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
 }
 
 .container {
@@ -20,10 +25,10 @@ body {
 }
 
 .search__input {
-	padding: 10px 30px;
-	border-radius: 20px;
-	font-size: 15px;
-	outline: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 15px;
+  outline: none;
 }
 
 .search__input:focus {
@@ -37,5 +42,3 @@ body {
   align-items: center;
   margin-top: 30px;
 }
-
-
