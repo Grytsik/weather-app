@@ -1,13 +1,16 @@
 import Moment from 'react-moment';
 import Icon from '../Icon/Icon';
 import 'moment/locale/uk';
-import './Forecast.css';
+import './Forecast.scss';
+import { useGlobalContext } from '../../Context/Context';
 
-export default function Forecast({ day, icon }) {
+export default function Forecast({ day }) {
+  const { icon } = useGlobalContext();
+
   return (
     <div className="forecast__item">
       <Moment locale="uk" format="dddd D">
-        {day.dt_txt}
+        {day?.dt_txt}
       </Moment>
       <div className="forecast__info">
         <span className="forecast__temp">

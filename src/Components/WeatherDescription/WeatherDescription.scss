@@ -1,17 +1,17 @@
+@import '../../variables/variables.scss';
+
 .weather__descriptions {
   display: flex;
   justify-content: space-around;
 }
 
 .weather__descriptions-item {
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 230px;
-  box-shadow: 2px 1px 10px black;
-  border-radius: 20px;
-  padding: 25px;
-  /* background: #ffdead; */
+  border-radius: $border-radius;
+  padding: 25px;background-color: rgba(255, 255, 255, 0.3);
 }
 
 .weather__icon-feels {
@@ -19,9 +19,7 @@
 }
 
 .weather__feels-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: $fwbold;
 }

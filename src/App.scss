@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import '../src/variables/variables.scss';
+
+body {
+  background-image: url(./img/nature.avif);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  object-fit: cover;
+  font-family: $font-family;
+  background: linear-gradient(to right, rgb(0, 90, 167), rgb(255, 253, 228));
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+	padding: 0 15px;
+}
+
+.header__container {
+  width: 100%;
+  @include flex(space-between, center);
+}
+
+.search__input {
+  padding: 10px 30px;
+  border-radius: $border-radius;
+  font-size: 15px;
+  outline: none;
+}
+
+.search__input:focus {
+  border: 1px solid $color-white;
+  box-shadow: 2px 1px 10px $color-black;
+}
+
+.forecast {
+  @include flex(space-around, center);
+  margin-top: 30px;
+}

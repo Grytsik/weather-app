@@ -1,17 +1,14 @@
-import './Weather.css';
+import './Weather.scss';
 import tempIcon from '../../img/thermometer.svg';
 import errImg from '../../img/computer.png';
 import Moment from 'react-moment';
 import Forecast from '../Forecast/Forecast';
 import WeatherDescription from '../WeatherDescription/WeatherDescription';
 import Icon from '../Icon/Icon';
-import { apiImg } from '../../api';
+import { useGlobalContext } from '../../Context/Context';
 
-export default function Weather({
-  location,
-  forecast,
-  icon,
-}) {
+export default function Weather() {
+  const { location, forecast, icon } = useGlobalContext();
   const today = new Date();
 
   const toUpperCaseFilter = (d) => {
@@ -19,54 +16,59 @@ export default function Weather({
   };
 
   return (
-    <>
-      <div className="weather">
+    <div className="weather">
+      <div className="weather__container container">
         {location?.length !== 0 ? (
           <>
             <div className="weather__item">
-              <p className="weather__city">
-                {location?.name}, {location?.sys?.country}
-              </p>
-              <span className="weather__temp">
+              <div className="weather__city">
+                <p>
+                  {location?.name}, {location?.sys?.country}
+                </p>
+              </div>
+              <div className="weather__timeTemp">
+                <span className="weather__temp">
+                  <img
+                    className="weather__icon"
+                    src={tempIcon}
+                    alt="temp-icon"
+                  />
+                  {location?.main?.temp.toFixed()}
+                  &deg;
+                </span>
                 <img
-                  className="weather__icon"
-                  src={tempIcon}
-                  alt="temp-icon"
+                  className="weather__animate"
+                  src={Icon(icon)}
+                  alt="icon"
                 />
-                {location?.main?.temp.toFixed()}
-                &deg;C
-              </span>
-              <img
-                className="weather__animate"
-                src={Icon(icon)}
-                alt="icon"
-              />
-              <div className="weather__time">
-                <Moment
-                  filter={toUpperCaseFilter}
-                  format="MMMM DD"
-                >
-                  {today}
-                </Moment>
-                <Moment
-                  filter={toUpperCaseFilter}
-                  format="dddd HH:mm"
-                >
-                  {today}
-                </Moment>
+                <div className="weather__time">
+                  <Moment
+                    className="weather__time_main"
+                    filter={toUpperCaseFilter}
+                    format="HH:mm"
+                  >
+                    {today}
+                  </Moment>
+                  <Moment
+                    filter={toUpperCaseFilter}
+                    format="dddd"
+                  >
+                    {today}
+                  </Moment>
+                  <Moment
+                    filter={toUpperCaseFilter}
+                    format="MMMM DD"
+                  >
+                    {today}
+                  </Moment>
+                </div>
               </div>
             </div>
-            <WeatherDescription
-              location={location}
-              tempIcon={tempIcon}
-            />
+            <div className="weather__item"></div>
+            <WeatherDescription tempIcon={tempIcon} />
             <div className="forecast">
               {forecast.map((item, index) => (
-                <Forecast
-                  icon={icon}
-                  key={index}
-                  day={item}
-                />
+                <Forecast key={index} day={item} />
               ))}
             </div>
           </>
@@ -83,6 +85,6 @@ export default function Weather({
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

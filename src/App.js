@@ -1,108 +1,15 @@
-import './App.css';
+import './App.scss';
 import Header from './Components/Header/Header';
-import { apiKEY, apiURL } from './api';
-import { useEffect, useState } from 'react';
 import Weather from './Components/Weather/Weather';
-import Alert from './Components/Alert/Alert';
 import { ColorRing } from 'react-loader-spinner';
+import { useGlobalContext } from './Context/Context';
 
 function App() {
-  const [value, setValue] = useState('');
-  const [location, setLocation] = useState([]);
-  const [forecast, setForecast] = useState([]);
-  const [icon, setIcon] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [lon, setLon] = useState(null);
-  const [lat, setLat] = useState(null);
-
-  const searchLocation = (event) => {
-    if (event.key === 'Enter') {
-      setValue(event.target.value.trim());
-    }
-  };
-
-  const how_to_search = value
-    ? `q=${value}`
-    : `lat=${lat}&lon=${lon}`;
-
-  const getForecast = async () => {
-    fetch(
-      `${apiURL}/forecast?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.cod >= 400) {
-          setForecast([]);
-          setTimeout(() => {
-            setLoading(false);
-          }, 3000);
-        } else {
-          const dailyDate = data.list.filter((item) =>
-            item.dt_txt.includes('18:00:00'),
-          );
-          setForecast(dailyDate);
-          setLoading(false);
-        }
-      });
-  };
-
-  useEffect(() => {
-    if (!value) {
-      getCurrentPosition();
-    }
-    getWeatherIp();
-  }, [lat, value]);
-
-  const getCurrentPosition = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLat(position.coords.latitude);
-          setLon(position.coords.longitude);
-          console.log(lat, lon);
-        }
-      );
-    }
-  };
-
-  const getWeatherIp = async () => {
-    setLoading(true);
-
-    fetch(
-      `${apiURL}/weather?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.cod >= 400) {
-          setLocation([]);
-          setTimeout(() => {
-            setLoading(false);
-          }, 3000);
-        } else {
-          setIcon(data?.weather[0]?.main);
-          setLocation(data);
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    getForecast();
-  };
+  const { loading } = useGlobalContext();
 
   return (
-    <div className='App'>
-      <div className="header">
-        <div className=" container header__container">
-          <Header />
-          <input
-            type="text"
-            placeholder="Пошук..."
-            className="search__input"
-            onKeyDown={searchLocation}
-          />
-        </div>
-      </div>
+    <div className="App">
+      <Header />
       {loading ? (
         <ColorRing
           visible={true}
@@ -119,12 +26,7 @@ function App() {
           ]}
         />
       ) : (
-        <Weather
-          location={location}
-          loading={loading}
-          forecast={forecast}
-          icon={icon}
-        />
+        <Weather />
       )}
     </div>
   );

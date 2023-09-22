@@ -1,0 +1,91 @@
+@import '../../variables/variables.scss';
+
+.weather {
+  width: 1100px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: $border-radius;
+}
+
+.weather__item {
+  @include flex(space-around, center);
+  flex-direction: column;
+}
+
+.weather__animate {
+  width: 150px;
+}
+
+.weather__city {
+  font-weight: $fwbold;
+  font-size: 35px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.weather__temp {
+  font-size: 80px;
+  position: relative;
+  font-weight: $fwbold;
+}
+
+.weather__info {
+  @include flex(space-around, center);
+}
+
+.weather__time {
+  @include flex(center, center);
+  flex-direction: column;
+  font-size: 20px;
+  background: linear-gradient(to right, #d3cce3, #e9e4f0);
+  padding: 40px;
+  border-radius: 40px;
+}
+
+.weather__time_main {
+  font-size: 60px;
+  font-weight: bold;
+  box-shadow: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 10px;
+  text-shadow: 2px 1px 5px black;
+}
+
+.weather__timeTemp {
+  @include flex(center, center);
+  width: 600px;
+  background: linear-gradient(to right, #d3cce3, #e9e4f0);
+  margin-bottom: 30px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 2px 4px 10px white;
+}
+
+.weather__icon {
+  width: 70px;
+  position: absolute;
+  left: -45px;
+  bottom: 5px;
+}
+
+.blocks-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.weather__error {
+  @include flex(center, center);
+  flex-direction: column;
+  font-size: 25px;
+  font-weight: $fwbold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.weather__error-img {
+  width: 200px;
+}
