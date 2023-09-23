@@ -5,6 +5,7 @@
   padding: 15px;
   margin: 0 auto;
   border-radius: $border-radius;
+  font-family: $font-family;
 }
 
 .weather__item {
@@ -18,13 +19,15 @@
 
 .weather__city {
   font-weight: $fwbold;
+  color: $color-purple;
   font-size: 35px;
   margin: 0;
   text-transform: uppercase;
+  text-shadow: 1px 1px 5px $color-black;
 }
 
 .weather__temp {
-  font-size: 80px;
+  font-size: 100px;
   position: relative;
   font-weight: $fwbold;
 }
@@ -62,10 +65,10 @@
 }
 
 .weather__icon {
-  width: 70px;
+  width: 100px;
   position: absolute;
-  left: -45px;
-  bottom: 5px;
+  left: -66px;
+  bottom: 14px;
 }
 
 .blocks-wrapper {
@@ -86,6 +89,13 @@
   transform: translate(-50%, -50%);
 }
 
+.weather__error {
+  background: linear-gradient(to right, #d3cce3, #e9e4f0);
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: 2px 2px 10px $color-white;
+}
+
 .weather__error-img {
-  width: 200px;
+  width: 300px;
 }

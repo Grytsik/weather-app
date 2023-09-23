@@ -1,9 +1,11 @@
 $box-shadow: 2px 1px 10px #000;
-$font-family: 'Roboto', sans-serif;
+// $font-family: 'Roboto', sans-serif;
+$font-family: 'Kanit', sans-serif;
 $color-white: #fff;
 $color-black: #000;
 $fwbold: 700;
 $border-radius: 20px;
+$color-purple: #e9e4f0;
 
 @mixin flex($justify, $align) {
 	display: flex;

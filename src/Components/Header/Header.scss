@@ -1,13 +1,25 @@
 @import '../../variables/variables.scss';
 
 .header__title {
+  @include flex(center, center);
   font-weight: $fwbold;
-  font-size: 30px;
+  font-size: 15px;
   text-transform: uppercase;
+  text-shadow: 1px 1px 5px $color-black;
 }
 
 .header__span {
   background: $color-white;
   border-radius: $border-radius;
   padding: 2px;
+}
+
+.header__logo {
+  width: 60px;
+  height: 60px;
+}
+
+.header__brand {
+  color: $color-purple;
+  margin-left: 10px;
 }

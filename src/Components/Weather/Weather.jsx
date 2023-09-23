@@ -1,6 +1,6 @@
 import './Weather.scss';
 import tempIcon from '../../img/thermometer.svg';
-import errImg from '../../img/computer.png';
+import errImg from '../../img/sadWeather.png';
 import Moment from 'react-moment';
 import Forecast from '../Forecast/Forecast';
 import WeatherDescription from '../WeatherDescription/WeatherDescription';
