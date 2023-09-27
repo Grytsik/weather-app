@@ -30,9 +30,7 @@ export default function useGlobal() {
       .then((data) => {
         if (data.cod >= 400) {
           setForecast([]);
-          setTimeout(() => {
-            setLoading(false);
-          }, 3000);
+          setLoading(false);
         } else {
           const dailyDate = data.list.filter((item) =>
             item.dt_txt.includes('18:00:00'),
@@ -53,9 +51,7 @@ export default function useGlobal() {
       .then((data) => {
         if (data.cod >= 400) {
           setLocation([]);
-          setTimeout(() => {
-            setLoading(false);
-          }, 3000);
+          setLoading(false);
         } else {
           setIcon(data?.weather[0]?.main);
           setLocation(data);

@@ -32,11 +32,11 @@ export default function Icon(icon) {
       break;
     case 'Clear':
       result = clearDay;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clear.gif')";
+      // docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clear.gif')";
       break;
     case 'Clouds':
       result = clouds;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clouds.gif')";
+      // docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clouds.gif')";
       break;
     case 'Fog':
       result = fog;

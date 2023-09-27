@@ -8,6 +8,11 @@
   font-family: $font-family;
 }
 
+.weather__container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .weather__item {
   @include flex(space-around, center);
   flex-direction: column;
@@ -56,11 +61,9 @@
 
 .weather__timeTemp {
   @include flex(center, center);
-  width: 600px;
+  padding: 20px;
   background: linear-gradient(to right, #d3cce3, #e9e4f0);
-  margin-bottom: 30px;
   border-radius: 20px;
-  padding: 30px;
   box-shadow: 2px 4px 10px white;
 }
 

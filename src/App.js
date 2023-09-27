@@ -11,25 +11,27 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      {loading ? (
-        <ColorRing
-          visible={true}
-          height="100"
-          width="100"
-          ariaLabel="blocks-loading"
-          wrapperClass="blocks-wrapper"
-          colors={[
-            '#e15b64',
-            '#f47e60',
-            '#f8b26a',
-            '#abbd81',
-            '#849b87',
-          ]}
-        />
-      ) : (
-        <Weather />
-      )}
+      <div className="container">
+        <Header />
+        {loading ? (
+          <ColorRing
+            visible={true}
+            height="100"
+            width="100"
+            ariaLabel="blocks-loading"
+            wrapperClass="blocks-wrapper"
+            colors={[
+              '#e15b64',
+              '#f47e60',
+              '#f8b26a',
+              '#abbd81',
+              '#849b87',
+            ]}
+          />
+        ) : (
+          <Weather />
+        )}
+      </div>
     </div>
   );
 }

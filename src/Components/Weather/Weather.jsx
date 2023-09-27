@@ -17,55 +17,57 @@ export default function Weather() {
 
   return (
     <div className="weather">
-      <div className="weather__container container">
+      <div className="container">
         {location?.length !== 0 ? (
           <>
-            <div className="weather__item">
-              <div className="weather__city">
-                <p>
-                  {location?.name}, {location?.sys?.country}
-                </p>
-              </div>
-              <div className="weather__timeTemp">
-                <span className="weather__temp">
+            <div className="weather__city">
+              <p>
+                {location?.name}, {location?.sys?.country}
+              </p>
+            </div>
+            <div className="weather__container">
+              <div className="weather__item">
+                <div className="weather__timeTemp">
+                  <span className="weather__temp">
+                    {/* <img
+                      className="weather__icon"
+                      src={tempIcon}
+                      alt="temp-icon"
+                    /> */}
+                    {location?.main?.temp.toFixed()}
+                    &deg;
+                  </span>
                   <img
-                    className="weather__icon"
-                    src={tempIcon}
-                    alt="temp-icon"
+                    className="weather__animate"
+                    src={Icon(icon)}
+                    alt="icon"
                   />
-                  {location?.main?.temp.toFixed()}
-                  &deg;
-                </span>
-                <img
-                  className="weather__animate"
-                  src={Icon(icon)}
-                  alt="icon"
-                />
-                <div className="weather__time">
-                  <Moment
-                    className="weather__time_main"
-                    filter={toUpperCaseFilter}
-                    format="HH:mm"
-                  >
-                    {today}
-                  </Moment>
-                  <Moment
-                    filter={toUpperCaseFilter}
-                    format="dddd"
-                  >
-                    {today}
-                  </Moment>
-                  <Moment
-                    filter={toUpperCaseFilter}
-                    format="MMMM DD"
-                  >
-                    {today}
-                  </Moment>
+                  <div className="weather__time">
+                    <Moment
+                      className="weather__time_main"
+                      filter={toUpperCaseFilter}
+                      format="HH:mm"
+                    >
+                      {today}
+                    </Moment>
+                    <Moment
+                      filter={toUpperCaseFilter}
+                      format="dddd"
+                    >
+                      {today}
+                    </Moment>
+                    <Moment
+                      filter={toUpperCaseFilter}
+                      format="MMMM DD"
+                    >
+                      {today}
+                    </Moment>
+                  </div>
                 </div>
               </div>
+
+              <WeatherDescription tempIcon={tempIcon} />
             </div>
-            <div className="weather__item"></div>
-            <WeatherDescription tempIcon={tempIcon} />
             <div className="forecast">
               {forecast.map((item, index) => (
                 <Forecast key={index} day={item} />
