@@ -1,0 +1,28 @@
+@import '../../variables/variables.scss';
+
+.descriptions {
+
+}
+
+.descriptions__container {
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-around;
+}
+
+.descriptions__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.descriptions__temp {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.descriptions__text {
+  color: grey;
+}
