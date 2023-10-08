@@ -28,7 +28,9 @@ export default function WeatherDescription({ tempIcon }) {
           </div>
         </div>
         <div className="descriptions__item">
-          {/* <div className="descriptions__info">
+          <div className="descriptions__info">
+
+          <div className="descriptions__info">
             <span className="descriptions__temp">
               {location?.wind?.speed.toFixed()}km/h;
             </span>
@@ -39,7 +41,9 @@ export default function WeatherDescription({ tempIcon }) {
               )}
             </span>
             <p className="descriptions__text">Pressure</p>
-          </div> */}
+          </div>
+
+          </div>
         </div>
         <div className="descriptions__item">
           <div className="descriptions__info">

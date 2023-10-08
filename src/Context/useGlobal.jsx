@@ -15,7 +15,10 @@ export default function useGlobal() {
       getCurrentPosition();
     }
     getWeatherIp();
+<<<<<<< HEAD
     getForecast();
+=======
+>>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
   }, [lat, searchValue]);
 
   const how_to_search = searchValue
@@ -62,6 +65,10 @@ export default function useGlobal() {
       .catch((err) => {
         console.log(err);
       });
+<<<<<<< HEAD
+=======
+    getForecast();
+>>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
   };
 
   // Определение погоды по айпи

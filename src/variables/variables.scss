@@ -2,6 +2,7 @@ $box-shadow: 2px 1px 10px #000;
 // $font-family: 'Roboto', sans-serif;
 $font-family: 'Kanit', sans-serif;
 $color-white: #fff;
+<<<<<<< HEAD
 $text-color: #9399a2;
 $color-black: #000;
 $bg-color: #0b131e;
@@ -9,6 +10,12 @@ $bg-color-card: #202b3b;
 $border-color: #273446;
 $fwbold: 700;
 $border-radius: 20px;
+=======
+$color-black: #000;
+$fwbold: 700;
+$border-radius: 20px;
+$color-purple: #e9e4f0;
+>>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
 
 @mixin flex($justify, $align) {
 	display: flex;

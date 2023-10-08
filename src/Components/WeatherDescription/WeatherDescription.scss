@@ -1,7 +1,18 @@
 @import '../../variables/variables.scss';
 
 .descriptions {
+<<<<<<< HEAD
 
+=======
+  width: 400px;
+  padding: 10px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #d3cce3, #e9e4f0);
+  box-shadow: 2px 4px 10px white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+>>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
 }
 
 .descriptions__container {
