@@ -6,6 +6,7 @@ import wind from '../../img/wind.svg';
 import Moment from 'react-moment';
 import './WeatherDescription.scss';
 import { useGlobalContext } from '../../Context/Context';
+import { Card } from 'react-bootstrap';
 
 export default function WeatherDescription({ tempIcon }) {
   const { location } = useGlobalContext();
@@ -13,9 +14,9 @@ export default function WeatherDescription({ tempIcon }) {
   console.log(location);
 
   return (
-    <div className="descriptions">
+    <Card className="descriptions">
       <div className="descriptions__container">
-        <div className="descriptions__item">
+        {/* <div className="descriptions__item"> */}
           <div className="descriptions__info">
             <span className="descriptions__temp">
               {location?.main?.temp_max.toFixed()}&deg;
@@ -25,9 +26,23 @@ export default function WeatherDescription({ tempIcon }) {
               {location?.main?.temp_min.toFixed()}&deg;
             </span>
             <p className="descriptions__text">Min</p>
+            <Moment unix
+              className="descriptions__temp"
+              format="HH:mm"
+            >
+              {location?.sys?.sunrise}
+            </Moment>
+            <p className="descriptions__text">Sunrise</p>
+            <Moment unix
+              className="descriptions__temp"
+              format="HH:mm"
+            >
+              {location?.sys?.sunset}
+            </Moment>
+            <p className="descriptions__text">Sunset</p>
           </div>
-        </div>
-        <div className="descriptions__item">
+        {/* </div> */}
+        {/* <div className="descriptions__item">
           <div className="descriptions__info">
 
           <div className="descriptions__info">
@@ -44,9 +59,9 @@ export default function WeatherDescription({ tempIcon }) {
           </div>
 
           </div>
-        </div>
-        <div className="descriptions__item">
-          <div className="descriptions__info">
+        </div> */}
+        {/* <div className="descriptions__item"> */}
+          {/* <div className="descriptions__info">
             <Moment unix
               className="descriptions__temp"
               format="HH:mm"
@@ -62,8 +77,8 @@ export default function WeatherDescription({ tempIcon }) {
             </Moment>
             <p className="descriptions__text">Sunset</p>
           </div>
-        </div>
+        </div> */}
       </div>
-    </div>
+    </Card>
   );
 }

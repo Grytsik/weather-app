@@ -6,6 +6,7 @@ export default function useGlobal() {
   const [location, setLocation] = useState([]);
   const [forecast, setForecast] = useState([]);
   const [icon, setIcon] = useState('');
+  const [iconForecast, setIconForecast] = useState('');
   const [loading, setLoading] = useState(true);
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
@@ -14,31 +15,23 @@ export default function useGlobal() {
     if (!searchValue) {
       getCurrentPosition();
     }
-    getWeatherIp();
-<<<<<<< HEAD
-    getForecast();
-=======
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
+    getForecast(); 
+    getWeatherIp(); 
   }, [lat, searchValue]);
 
-  const how_to_search = searchValue
-    ? `q=${searchValue}`
-    : `lat=${lat}&lon=${lon}`;
+
+  const how_to_search = searchValue ? `q=${searchValue}` : `lat=${lat}&lon=${lon}`;
 
   // Погода на 5 дней
   const getForecast = async () => {
-    fetch(
-      `${apiURL}/forecast?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`,
-    )
+    fetch(`${apiURL}/forecast?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.cod >= 400) {
           setForecast([]);
           setLoading(false);
         } else {
-          const dailyDate = data.list.filter((item) =>
-            item.dt_txt.includes('18:00:00'),
-          );
+          const dailyDate = data.list.filter((item) => item.dt_txt.includes('18:00:00'));
           setForecast(dailyDate);
           setLoading(false);
         }
@@ -48,9 +41,7 @@ export default function useGlobal() {
   const getWeatherIp = async () => {
     setLoading(true);
 
-    fetch(
-      `${apiURL}/weather?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`,
-    )
+    fetch(`${apiURL}/weather?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.cod >= 400) {
@@ -65,21 +56,15 @@ export default function useGlobal() {
       .catch((err) => {
         console.log(err);
       });
-<<<<<<< HEAD
-=======
-    getForecast();
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
   };
 
   // Определение погоды по айпи
   const getCurrentPosition = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLat(position.coords.latitude);
-          setLon(position.coords.longitude);
-        },
-      );
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLat(position.coords.latitude);
+        setLon(position.coords.longitude);
+      });
     }
   };
 

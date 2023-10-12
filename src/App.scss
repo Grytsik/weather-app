@@ -1,26 +1,22 @@
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;700&display=swap');
 @import '../src/variables/variables.scss';
-<<<<<<< HEAD
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 body {
   background: $bg-color;
-=======
-
-body {
-  background-image: url(./img/nature.avif);
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
   object-fit: cover;
   font-family: $font-family;
   opacity: 1;
-  transition: all .1s linear;
+  transition: background-image 1s ease;
 }
 
-<<<<<<< HEAD
+p {
+  margin-bottom: 0;
+}
+
 .card {
   background: $bg-color-card;
   border-radius: $border-radius;
@@ -30,8 +26,6 @@ body {
   color: $text-color;
 }
 
-=======
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -55,13 +49,7 @@ body {
   box-shadow: 2px 1px 10px $color-black;
 }
 
-<<<<<<< HEAD
 .app__main {
   display: flex;
   justify-content: space-between;
-=======
-.forecast {
-  @include flex(space-around, center);
-  margin-top: 30px;
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
 }

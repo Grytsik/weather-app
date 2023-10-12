@@ -7,84 +7,90 @@ import fog from '../../animate-icon/fog.svg';
 import haze from '../../animate-icon/haze.svg';
 import smoke from '../../animate-icon/smoke.svg';
 import clearDay from '../../animate-icon/clear-day.svg';
+import cloudyBack from '../../img/cloud-backgr.jpg';
+import lighting from '../../img/lightingBack.jpg';
+import rainBack from '../../img/rainBack.jpg';
+import clearBack from '../../img/clearBack.jpg';
+import snowBack from '../../img/snowBack.jpg';
 
-export default function Icon(icon) {
-
+export default function Icon(icon, isForecast) {
   let result = clearDay;
-<<<<<<< HEAD
-=======
-  let docBody = document.body;
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
+  let backgroundUrl = '';
 
-  switch (icon) {
-    case 'Thunderstorm':
-      result = thunderStorm;
-<<<<<<< HEAD
-      break;
-    case 'Drizzle':
-      result = drizzle;
-      break;
-    case 'Rain':
-      result = rain;
-      break;
-    case 'Snow':
-      result = snow;
-      break;
-    case 'Clear':
-      result = clearDay;
-      break;
-    case 'Clouds':
-      result = clouds;
-      break;
-    case 'Fog':
-      result = fog;
-      break;
-    case 'Haze':
-      result = haze;
-      break;
-    case 'Smoke':
-      result = smoke;
-      break;
-    default:
-=======
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/thunderstorm.gif')";
-      break;
-    case 'Drizzle':
-      result = drizzle;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/rain.gif')";
-      break;
-    case 'Rain':
-      result = rain;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/rain.gif')";
-      break;
-    case 'Snow':
-      result = snow;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/snow.gif')";
-      break;
-    case 'Clear':
-      result = clearDay;
-      // docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clear.gif')";
-      break;
-    case 'Clouds':
-      result = clouds;
-      // docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clouds.gif')";
-      break;
-    case 'Fog':
-      result = fog;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/fog.gif')";
-      break;
-    case 'Haze':
-      result = haze;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clouds.gif')";
-      break;
-    case 'Smoke':
-      result = smoke;
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clouds.gif')";
-      break;
-    default:
-      docBody.style.backgroundImage = "url('https://mdbgo.io/ascensus/mdb-advanced/img/clear.gif')";
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
-      break;
+  if (!isForecast) {
+    switch (icon) {
+      case 'Thunderstorm':
+        result = thunderStorm;
+        backgroundUrl = `url(${lighting})`;
+        break;
+      case 'Drizzle':
+        result = drizzle;
+        backgroundUrl = `url(${rainBack})`;
+        break;
+      case 'Rain':
+        result = rain;
+        backgroundUrl = `url(${rainBack})`;
+        break;
+      case 'Snow':
+        result = snow;
+        backgroundUrl = `url(${snowBack})`;
+        break;
+      case 'Clear':
+        result = clearDay;
+        backgroundUrl = `url(${clearBack})`;
+        break;
+      case 'Clouds':
+        result = clouds;
+        backgroundUrl = `url(${cloudyBack})`;
+        break;
+      case 'Fog':
+        result = fog;
+        break;
+      case 'Haze':
+        result = haze;
+        break;
+      case 'Smoke':
+        result = smoke;
+        break;
+      default:
+        break;
+    }
+
+    document.body.style.backgroundImage = backgroundUrl;
+
+    return result;
+  } else {
+    switch (icon) {
+      case 'Thunderstorm':
+        result = thunderStorm;
+        break;
+      case 'Drizzle':
+        result = drizzle;
+        break;
+      case 'Rain':
+        result = rain;
+        break;
+      case 'Snow':
+        result = snow;
+        break;
+      case 'Clear':
+        result = clearDay;
+        break;
+      case 'Clouds':
+        result = clouds;
+        break;
+      case 'Fog':
+        result = fog;
+        break;
+      case 'Haze':
+        result = haze;
+        break;
+      case 'Smoke':
+        result = smoke;
+        break;
+      default:
+        break;
+    }
+    return result;
   }
-	return result;
 }

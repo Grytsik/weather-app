@@ -1,6 +1,5 @@
 @import '../../variables/variables.scss';
 
-<<<<<<< HEAD
 .forecast {
   width: 400px;
 }
@@ -12,7 +11,7 @@
   margin-bottom: 35px;
   &::after {
     content: '';
-    position:absolute;
+    position: absolute;
     bottom: -15px;
     left: 0;
     width: 100%;
@@ -24,24 +23,6 @@
 
 .forecast__span {
   color: $color-white;
-=======
-
-.forecast {
-  background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 2px 4px 10px $color-white;
-  padding: 30px;
-  border-radius: 20px;
-}
-
-.forecast__item {
-  width: 150px;
-  font-weight: $fwbold;
-  padding: 5px;
-  border-radius: $border-radius;
-  text-align: center;
-  box-shadow: 1px 3px 10px $color-black;
-  background: linear-gradient(to right, rgb(211, 204, 227), rgb(233, 228, 240));
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
 }
 
 .forecast__icon {
@@ -51,11 +32,7 @@
 
 .forecast__info {
   @include flex(space-around, center);
-<<<<<<< HEAD
   margin-top: 20px;
-=======
-	margin-top: 20px;
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
 }
 
 .forecast__description {
@@ -64,14 +41,11 @@
 }
 
 .forecast__temp {
-<<<<<<< HEAD
   font-size: 18px;
-=======
-  font-size: 20px;
->>>>>>> 1c3927459b3f95008281a469c778f2059d7600b4
 }
 
 .forecast__feels {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
