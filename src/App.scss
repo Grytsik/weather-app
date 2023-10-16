@@ -11,6 +11,8 @@ body {
   font-family: $font-family;
   opacity: 1;
   transition: background-image 1s ease;
+  width: 100wh;
+  height: 100vh;
 }
 
 p {
@@ -20,10 +22,20 @@ p {
 .card {
   background: $bg-color-card;
   border-radius: $border-radius;
+  padding: 15px;
+  width: 250px;
+}
+
+.card-body {
+  padding: 0;
 }
 
 .card-text, .card-title, time {
   color: $text-color;
+}
+
+.card-title {
+  font-size: 16px;
 }
 
 .container {

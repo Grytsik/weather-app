@@ -5,9 +5,12 @@ import Icon from '../Icon/Icon';
 import { useGlobalContext } from '../../Context/Context';
 import { Card } from 'react-bootstrap';
 import WindArrow from '../WindArrow/WindArrow';
+import Clock from 'react-live-clock';
 
 export default function Weather() {
   const { location } = useGlobalContext();
+
+  console.log(location);
 
   return (
     <div className='weather'>
@@ -28,16 +31,23 @@ export default function Weather() {
                   src={Icon(location?.weather[0]?.main, false)}
                   alt='icon'
                 />
+                <Card className='clock'>
+                  <Clock format={'dd, MM'} style={{ fontSize: 25, textAlign: 'center' }} />
+                  <Clock
+                    format={'HH:mm:ss'}
+                    ticking={true}
+                    style={{ fontSize: 35, fontWeight: 'bold', textAlign: 'center' }}
+                  />
+                </Card>
               </div>
             </div>
-            {/* <WeatherDescription tempIcon={tempIcon} /> */}
             <WindArrow humidity={location?.main?.humidity} />
+            <WeatherDescription/>
           </>
         ) : (
           <Card className='weather__error'>
             <Card.Title className='weather__error-text'>Упс, ми не знайшли цє місто...</Card.Title>
-            {/* <img className='weather__error-img' src={errImg} alt='err' /> */}
-            <span className='weather__error_span' >¯\_(ツ)_/¯</span>
+            <span className='weather__error_span'>¯\_(ツ)_/¯</span>
           </Card>
         )}
       </div>

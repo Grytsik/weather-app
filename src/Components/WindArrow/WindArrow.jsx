@@ -47,7 +47,7 @@ const WindArrow = ({ humidity }) => {
           </div>
         </Card.Body>
       </Card>
-      <WindChart windSpeed={20}/>
+      <WindChart weatherData={location?.wind?.speed.toFixed()}/>
     </div>
   );
 };

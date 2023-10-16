@@ -1,24 +1,25 @@
 @import '../../variables/variables.scss';
 
-.descriptions__container {
+.feel {
   width: 100%;
+  margin-top: 10px;
+}
+
+.feel__body {
   display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.descriptions__item {
+.feel__span {
+  font-size: 20px;
+  color: $color-white;
+}
+
+.feel__item {
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.descriptions__temp {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.descriptions__text {
-  color: grey;
+.feel__icon {
+  width: 30px;
+  height: 30px;
 }

@@ -4,14 +4,13 @@ $color-white: #fff;
 $text-color: #9399a2;
 $color-black: #000;
 $bg-color: #101014;
-// $bg-color: #0b131e;
 $bg-color-card: #1b1a1d;
 $border-color: #273446;
 $fwbold: 700;
 $border-radius: 20px;
 
 @mixin flex($justify, $align) {
-	display: flex;
-	justify-content: $justify;
-	align-items: $align;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
 }

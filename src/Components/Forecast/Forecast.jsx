@@ -14,7 +14,7 @@ export default function Forecast() {
         <Card.Title className='forecast__title'>Forecast 5-days</Card.Title>
         {forecast.map((item, index) => (
           <div key={index} className='forecast__item'>
-            <Moment locale='uk' format='ddd'>
+            <Moment format='ddd'>
               {item?.dt_txt}
             </Moment>
             <img className='forecast__icon' src={Icon(item?.weather[0]?.main, true)} alt='icon' />

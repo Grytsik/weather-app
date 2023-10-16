@@ -1,18 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
+import ReactSpeedometer from 'react-d3-speedometer';
+import { Card } from 'react-bootstrap';
 
+export default function WindChart({ weatherData }) {
+  console.log(weatherData);
 
-
-const WindChart = ({ windSpeed }) => {
-    const calculatePercentage = (value, max) => {
-        return (value / max) * 100;
-      };
-    
-      const progress = calculatePercentage(windSpeed, 100); // Предположим, что максимальная скорость ветра - 100 км/ч
-    
-      return (
-        <div className="wind-speed-meter">
-          <div className="progress-bar" style={{ width: `${progress}%` }}></div>
-        </div>
-      );
-    };
-export default WindChart;
+  return (
+    <Card className='speedometer'>
+      <Card.Title>Wind</Card.Title>
+      <Card.Body>
+        <ReactSpeedometer
+          width={170}
+          value={weatherData}
+          ringWidth={10}
+          maxValue={100}
+          labelFontSize={12}
+          needleColor='#ffb800ed'
+          needleTransitionDuration={6000}
+          needleTransition='easeElasticOut'
+          currentValueText='${value} m/s'
+          segmentColors={['#23b473', '#8ba247', '#f69220', '#c1262c']}
+          segments={4}
+          textColor='#9399a2'
+        />
+      </Card.Body>
+    </Card>
+  );
+}

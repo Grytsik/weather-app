@@ -41,6 +41,10 @@
   bottom: 14px;
 }
 
+.weather__container {
+  flex-wrap: wrap;
+}
+
 .blocks-wrapper {
   position: absolute;
   left: 50%;
@@ -48,8 +52,13 @@
   transform: translate(-50%, -50%);
 }
 
+.clock {
+  width: 200px; 
+}
+
 .weather__error {
   @include flex(center, center);
+  width: 350px;
   flex-direction: column;
   font-size: 25px;
   font-weight: $fwbold;
