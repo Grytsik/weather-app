@@ -2,19 +2,18 @@ import { useState, useEffect } from 'react';
 import ReactSpeedometer from 'react-d3-speedometer';
 import { Card } from 'react-bootstrap';
 
-export default function WindChart({ weatherData }) {
-  console.log(weatherData);
+export default function WindCard({ weatherData }) {
 
   return (
-    <Card className='speedometer'>
+    <Card className='wind'>
       <Card.Title>Wind</Card.Title>
-      <Card.Body>
+      <Card.Body className='wind__body'>
         <ReactSpeedometer
           width={170}
-          value={weatherData}
+          value={Number(weatherData)}
           ringWidth={10}
           maxValue={100}
-          labelFontSize={12}
+          labelFontSize={'12'}
           needleColor='#ffb800ed'
           needleTransitionDuration={6000}
           needleTransition='easeElasticOut'

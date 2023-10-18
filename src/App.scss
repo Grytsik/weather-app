@@ -23,14 +23,18 @@ p {
   background: $bg-color-card;
   border-radius: $border-radius;
   padding: 15px;
-  width: 250px;
+  
 }
 
 .card-body {
   padding: 0;
 }
 
-.card-text, .card-title, time {
+time {
+  color: $color-white;
+}
+
+.card-text, .card-title {
   color: $text-color;
 }
 

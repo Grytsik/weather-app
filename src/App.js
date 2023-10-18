@@ -27,7 +27,7 @@ function App() {
             <Header />
             <div className='app__main'>
               <Weather />
-              {forecast && forecast.length > 0 ? <Forecast /> : null}
+              {forecast.length > 0 && !null ? <Forecast /> : null}
             </div>
           </>
         )}

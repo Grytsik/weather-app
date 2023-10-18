@@ -7,6 +7,17 @@
   transform: translate(-15px, 5px);
 }
 
+.CircularProgressbar {
+  width: 150px;
+  height: 150px;
+}
+
+.humidity__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .sunrise__text {
   margin: 0 15px;
 }
@@ -48,7 +59,7 @@
   --c5: #23b473;
 }
 
-.speedometer {
+.wind {
   width: 200px;
   height: 200px;
 }

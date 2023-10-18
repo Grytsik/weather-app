@@ -6,7 +6,6 @@ export default function useGlobal() {
   const [location, setLocation] = useState([]);
   const [forecast, setForecast] = useState([]);
   const [icon, setIcon] = useState('');
-  const [iconForecast, setIconForecast] = useState('');
   const [loading, setLoading] = useState(true);
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
@@ -15,10 +14,9 @@ export default function useGlobal() {
     if (!searchValue) {
       getCurrentPosition();
     }
-    getForecast(); 
-    getWeatherIp(); 
+    getForecast();
+    getWeatherIp();
   }, [lat, searchValue]);
-
 
   const how_to_search = searchValue ? `q=${searchValue}` : `lat=${lat}&lon=${lon}`;
 
