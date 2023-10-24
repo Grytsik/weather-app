@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react';
 import ReactSpeedometer from 'react-d3-speedometer';
 import { Card } from 'react-bootstrap';
 
 export default function WindCard({ weatherData }) {
-
   return (
     <Card className='wind'>
       <Card.Title>Wind</Card.Title>
@@ -17,7 +15,7 @@ export default function WindCard({ weatherData }) {
           needleColor='#ffb800ed'
           needleTransitionDuration={6000}
           needleTransition='easeElasticOut'
-          currentValueText='${value} m/s'
+          currentValueText={`${weatherData} m/s`}
           segmentColors={['#23b473', '#8ba247', '#f69220', '#c1262c']}
           segments={4}
           textColor='#9399a2'

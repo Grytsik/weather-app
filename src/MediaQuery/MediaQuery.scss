@@ -173,3 +173,30 @@
     max-width: 150px;
   }
 }
+
+@media (max-width: 320px) {
+  .weather__error {
+    width: 250px;
+  }
+
+  .weather__error_span {
+    font-size: 40px;
+  }
+
+  .slick-list {
+    width: 250px;
+  }
+
+  .header__title {
+    font-size: 18px;
+  }
+
+  .header__logo {
+    width: 25px;
+    height: 25px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}

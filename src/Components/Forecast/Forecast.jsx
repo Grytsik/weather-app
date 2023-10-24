@@ -11,7 +11,6 @@ export default function Forecast() {
   const [innerW, setInnerW] = useState(0);
 
   const settings = {
-    infinite: false,
     className: 'center',
     centerMode: true,
     infinite: true,
@@ -42,13 +41,13 @@ export default function Forecast() {
         {innerW <= 668 ? (
           <Slick className='slider-wrapper' settings={settings}>
             {forecast.map((item, index) => (
-              <ForecastItem key={index} item={item} index={index} />
+              <ForecastItem key={index} item={item} />
             ))}
           </Slick>
         ) : (
           <>
             {forecast.map((item, index) => (
-              <ForecastItem key={index} item={item} index={index} />
+              <ForecastItem key={index} item={item} />
             ))}
           </>
         )}

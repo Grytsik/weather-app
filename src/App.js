@@ -3,8 +3,6 @@ import Header from './Components/Header/Header';
 import Weather from './Components/Weather/Weather';
 import { ColorRing } from 'react-loader-spinner';
 import { useGlobalContext } from './Context/Context';
-import imagees from '../src/img/computer.png';
-import { useEffect } from 'react';
 import Forecast from './Components/Forecast/Forecast';
 
 function App() {

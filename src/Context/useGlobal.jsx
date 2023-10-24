@@ -22,7 +22,7 @@ export default function useGlobal() {
 
   // Погода на 5 дней
   const getForecast = async () => {
-    fetch(`${apiURL}/forecast?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`)
+    await fetch(`${apiURL}/forecast?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.cod >= 400) {
@@ -39,7 +39,7 @@ export default function useGlobal() {
   const getWeatherIp = async () => {
     setLoading(true);
 
-    fetch(`${apiURL}/weather?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`)
+    await fetch(`${apiURL}/weather?${how_to_search}&lang=ua&units=metric&appid=${apiKEY}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.cod >= 400) {
