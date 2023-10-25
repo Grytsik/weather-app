@@ -1,4 +1,5 @@
 {
+  "homepage": "https://grytsik.github.io/weather-app/",
   "name": "apppp",
   "version": "0.1.0",
   "private": true,
@@ -13,12 +14,12 @@
     "d3": "^7.8.5",
     "konva": "^9.2.1",
     "moment": "2.29.1",
-    "react": "^18.2.0",
+    "react": "^18.0.0",
     "react-bootstrap": "^2.9.0",
     "react-chartjs-2": "^5.2.0",
     "react-circular-progressbar": "^2.1.0",
-    "react-d3-speedometer": "^1.1.0",
-    "react-dom": "^18.2.0",
+    "react-d3-speedometer": "^2.1.0-rc.0",
+    "react-dom": "^18.0.0",
     "react-gauge-chart": "^0.4.1",
     "react-konva": "^18.2.10",
     "react-live-clock": "^6.1.16",
@@ -33,7 +34,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
